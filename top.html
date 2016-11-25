@@ -1,0 +1,77 @@
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1024">
+<title>CSSで作る擬似フレーム（疑似フレーム）サイト [DEMO] [左サイドバー固定] - Eiji</title>
+<style>
+body {
+	color: #000;
+	font-family: Verdana,Arial,'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','メイリオ',Meiryo,'ＭＳ Ｐゴシック','MS PGothic',sans-serif;
+	font-size: 14px;
+	font-weight: normal;
+	letter-spacing: 0;
+	line-height: 1.3;
+	margin:0;
+	_overflow:hidden;
+	padding:0;
+}
+#left_frame {
+	left:0;
+	height:100%;
+	margin:0;
+	padding:0;
+	position:fixed;
+	_position:absolute;
+	top:0;
+	width:200px;
+}
+#right_frame {
+	margin:0 0 0 210px;
+	padding:0;
+	height:100%;
+	_overflow:auto;
+}
+</style>
+</head>
+<body>
+<script src="//accaii.com/eijispace/script.js" async></script><noscript><img src="//accaii.com/eijispace/script?guid=on"></noscript>
+
+<div id="left_frame">
+  <div weight="200px">ロゴ</div>
+  <div style="weight:200px; height:200px; border:#000000 solid 1px;">
+  ＜お知らせ＞<br>
+  ・2016/11/01　申請が許可されました。<br>
+  ・2016/11/05　申請が許可されました。<br>
+  <font color="red">・2016/11/09　差し戻し文書があります。</font><br>
+  </div>
+  <div style="weight:200px; border:#000000 solid 1px;">
+    ID:h.yoshida<br>
+    user:吉田 大樹<br>
+    <br>
+    <br>
+    <a href="draftMailList.html">◆下書きメール一覧</a><br><br>
+    <a href="clientDataRegAppHistory.html">◆顧客情報登録申請履歴</a><br><br>
+    <a href="clientDataRegAppExchange.html">◆顧客情報登録申請授受</a><br><br>
+    <a href="userManage.html">◆ユーザ管理</a><br><br>
+    <a href="mailStationeryRegUpd.html">◆メール雛形登録・編集</a><br><br>
+  </div>
+</div>
+
+<div id="right_frame">
+  <ul class="tab">
+    <li class="select">登録</li>
+    <li>顧客情報</li>
+    <li>メール</li>
+  </ul>
+  <ul class="content">
+    <li>
+    </li>
+    <li>
+    </li>
+    <li>
+    </li>
+  </ul>
+</div>
+
+</body>
+</html>
