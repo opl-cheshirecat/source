@@ -80,9 +80,11 @@ body {
 ------------------------*/
 .basic_infomation_input {
   margin-left:10px;
+  width:100%;
 }
 .contact_info {
   padding-left:30px;
+  width:30%;
 }
 .year {
   width: 50px;
@@ -97,7 +99,11 @@ body {
   width:100%;
 }
 .inputForm {
-  width:4 00px;
+  width:70%;
+  padding-right:40px;
+}
+.inputItem {
+  width:30%;
 }
 .button_area {
   margin-top:50px;
