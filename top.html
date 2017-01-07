@@ -41,10 +41,11 @@
 		<ul class="content">
 			<li>
 				<!-- 登録ウィンドウ -->
-					<h2>◆基本情報入力フォーム</h2>
+				<h2>◆基本情報入力フォーム</h2>
+				<form action="regist.php" method="post">
 					<table class="basic_infomation_input">
 						<tr>
-							<td>
+							<td class="inputItem">
 								会社名
 							</td>
 							<td class="inputForm">
@@ -52,7 +53,7 @@
 							</td>
 						</tr>
 						<tr>
-							<td>
+							<td class="inputItem">
 								会社名フリガナ
 							</td>
 							<td class="inputForm">
@@ -60,15 +61,7 @@
 							</td>
 						</tr>
 						<tr>
-							<td>
-								顧客管理番号
-							</td>
-							<td class="inputForm">
-								<input type="text" name="clientId" class="basicForm">
-							</td>
-						</tr>
-						<tr>
-							<td>
+							<td class="inputItem">
 								顧客管理区分
 							</td>
 							<td class="inputForm">
@@ -76,17 +69,7 @@
 							</td>
 						</tr>
 						<tr>
-							<td>
-								最終登録日
-							</td>
-							<td class="inputForm">
-								<input type="text" name="create_date_year" class="year" class="basicForm">/
-								<input type="text" name="create_date_month" class="month" class="basicForm">/
-								<input type="text" name="create_date_day" class="day" class="basicForm">
-							</td>
-						</tr>
-						<tr>
-							<td>
+							<td class="inputItem">
 								代表取締役
 							</td>
 							<td class="inputForm">
@@ -94,7 +77,7 @@
 							</td>
 						</tr>
 						<tr>
-							<td>
+							<td class="inputItem">
 								代表取締役フリガナ
 							</td>
 							<td class="inputForm">
@@ -102,7 +85,7 @@
 							</td>
 						</tr>
 						<tr>
-							<td>
+							<td class="inputItem">
 								郵便番号
 							</td>
 							<td class="inputForm">
@@ -110,7 +93,7 @@
 							</td>
 						</tr>
 						<tr>
-							<td>
+							<td class="inputItem">
 								所在地住所
 							</td>
 							<td class="inputForm">
@@ -118,7 +101,7 @@
 							</td>
 						</tr>
 						<tr>
-							<td>
+							<td class="inputItem">
 								代表連絡先
 							</td>
 							<td>
@@ -157,7 +140,7 @@
 							</td>
 						</tr>
 						<tr>
-							<td>
+							<td class="inputItem">
 								ホームページ
 							</td>
 							<td class="inputForm">
@@ -169,7 +152,7 @@
 							<td>&nbsp;</td>
 						</tr>
 						<tr>
-							<td>
+							<td class="inputItem">
 								担当氏名
 							</td>
 							<td class="inputForm">
@@ -177,7 +160,7 @@
 							</td>
 						</tr>
 						<tr>
-							<td>
+							<td class="inputItem">
 								担当フリガナ
 							</td>
 							<td class="inputForm">
@@ -185,7 +168,7 @@
 							</td>
 						</tr>
 						<tr>
-							<td>
+							<td class="inputItem">
 								担当直通TEL
 							</td>
 							<td class="inputForm">
@@ -193,7 +176,7 @@
 							</td>
 						</tr>
 						<tr>
-							<td>
+							<td class="inputItem">
 								担当MAIL
 							</td>
 							<td class="inputForm">
@@ -201,7 +184,7 @@
 							</td>
 						</tr>
 						<tr>
-							<td>
+							<td class="inputItem">
 								担当所属部課
 							</td>
 							<td class="inputForm">
@@ -209,8 +192,8 @@
 							</td>
 						</tr>
 						<tr>
-							<td>
-								担当備考
+							<td valign="top" class="inputItem">
+								備考
 							</td>
 							<td class="inputForm">
 								<textarea name="inchangeRemarks" rows="10" class="basicForm"></textarea>
@@ -228,6 +211,7 @@
 							</td>
 						</tr>
 					</table>
+				</form>
 			</li>
 
 			<li class="hide">
