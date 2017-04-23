@@ -1,0 +1,100 @@
+body {
+  margin: 0;
+}
+
+/*----------
+  ヘッダー
+----------*/
+.header {
+  height:5%;
+  width:100%;
+  background-color:#000000;
+}
+.header_system_name {
+  color: #ffffff;
+  font-size: 120%;
+  height: 100%;
+  margin-left: 5%;
+  float: left;
+  vertical-align: middle;
+}
+div.header_menu {
+  color: #ffffff;
+  height: 100%;
+  margin-left: 28%;
+}
+table.header_menu {
+  width: 40%;
+  height: 100%;
+}
+td.header_menu {
+  padding: 0 5%;
+  text-align: center;
+  vertical-align: middle;
+}
+.header_menu_column {
+  color: #ffffff;
+  font-size: 100%;
+}
+
+/*----------
+  共通部
+----------*/
+.main_flame {
+  margin-left: 10%;
+}
+.main_flame_title {
+  font-weight: bold;
+}
+
+/*----------
+  顧客情報入力
+----------*/
+.client_input_form {
+  margin-left:20px;
+  width:80%;
+}
+.contact_info {
+  padding-left:30px;
+  width:20%;
+}
+.year {
+  width: 50px;
+}
+.month {
+  width:50px;
+}
+.day {
+  width:50px;
+}
+.basicForm {
+  width:100%;
+}
+.inputForm {
+  width:70%;
+  padding-right:40px;
+}
+.inputItem {
+  width:30%;
+}
+.button_area {
+  margin-top:50px;
+}
+.button {
+  font-size: 25px;
+}
+
+/*----------
+  顧客検索条件入力
+----------*/
+.search_entry{
+  border-spacing: 10px 10px;
+}
+.search_area {
+  width: 85%;
+}
+.search_button {
+  margin-top: 1%;
+  margin-right: 12%;
+  text-align: right;
+}
