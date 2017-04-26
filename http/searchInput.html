@@ -1,92 +1,96 @@
 <html>
-<head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="../css/style.css">
 
-    <title>顧客情報検索画面</title>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+
+  <title>顧客情報検索画面</title>
 </head>
 
 <body>
-    <!-- ヘッダ -->
-    <div class="header">
-        <div class="header_system_name">
-            顧客管理システム
-        </div>
-
-        <div class="header_menu">
-            <table class="header_menu">
-                <tr>
-                    <td class="header_menu">
-                        <p class="header_menu_column">顧客情報登録</p>
-                    </td>
-                    <td class="header_menu">
-                        <p class="header_menu_column">顧客情報検索</p>
-                    </td>
-                </tr>
-            </table>
-        </div>
+  <!-- ヘッダ -->
+  <div class="header">
+    <div class="header_system_name">
+      顧客管理システム
     </div>
-    <!-- ヘッダ -->
-    <!-- 検索条件入力 -->
-    <div class="main_flame">
-      <h2 class="main_flame_title">顧客情報検索</h2>
 
-      <form action="../php/search.php" method="post">
-        <div class="search_area">
+    <div class="header_menu">
+      <table class="header_menu">
+        <tr>
+          <td class="header_menu">
+            <a href="index.html">
+              <p class="header_menu_column">顧客情報登録</p>
+            </a>
+          </td>
+          <td class="header_menu">
+            <p class="header_menu_column">顧客情報検索</p>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <!-- ヘッダ -->
+  <!-- 検索条件入力 -->
+  <div class="main_flame">
+    <h2 class="main_flame_title">顧客情報検索</h2>
+
+    <form action="php/search.php" method="post">
+      <div class="search_area">
         <table class="search_entry">
           <tr>
-              <td>
-                  会社名
-              </td>
-              <td>
-                  <input type="text" name="corpName" class="basicForm">
-              </td>
-              <td></td>
-              <td>
-                  会社名フリガナ
-              </td>
-              <td>
-                  <input type="text" name="corpNameKana" class="basicForm">
-              </td>
-            </tr>
-            <tr>
-                  <td>
-                      顧客管理区分
-                  </td>
-                  <td>
-                      <input type="text" name="clientAdmin" class="basicForm">
-                  </td>
-                  <td></td>
-                  <td>
-                      所在地住所
-                  </td>
-                  <td>
-                      <input type="text" name="corpAddress" class="basicForm">
-                  </td>
-            </tr>
-            <tr>
-              <td>
-                  担当氏名
-              </td>
-              <td>
-                  <input type="text" name="inchangeName" class="basicForm">
-              </td>
-              <td></td>
-              <td>
-                  担当フリガナ
-              </td>
-              <td>
-                  <input type="text" name="inchangeKana" class="basicForm">
-              </td>
-            </tr>
+            <td>
+              会社名
+            </td>
+            <td>
+              <input type="text" name="corpName" class="basicForm">
+            </td>
+            <td></td>
+            <td>
+              会社名フリガナ
+            </td>
+            <td>
+              <input type="text" name="corpNameKana" class="basicForm">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              顧客管理区分
+            </td>
+            <td>
+              <input type="text" name="clientAdmin" class="basicForm">
+            </td>
+            <td></td>
+            <td>
+              所在地住所
+            </td>
+            <td>
+              <input type="text" name="corpAddress" class="basicForm">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              担当氏名
+            </td>
+            <td>
+              <input type="text" name="inchangeName" class="basicForm">
+            </td>
+            <td></td>
+            <td>
+              担当フリガナ
+            </td>
+            <td>
+              <input type="text" name="inchangeKana" class="basicForm">
+            </td>
+          </tr>
         </table>
         <div class="search_button">
-        <input type="image" src="../gif/search_button.gif" alt="検索">
+          <input type="image" src="../gif/search_button.gif" alt="検索">
+        </div>
       </div>
-    </div>
-      </form>
-    </div>
-    <!-- 検索条件入力 -->
+    </form>
+  </div>
+  <!-- 検索条件入力 -->
 </body>
+
 </html>
