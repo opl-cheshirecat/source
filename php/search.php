@@ -9,8 +9,6 @@
 
 <?php
 
-echo mb_internal_encoding();
-
 /* データベース接続 */
 try{
 $pdo = new PDO('mysql:host=localhost;dbname=cheshirecat_test;charset=utf8','root','root',array(PDO::ATTR_EMULATE_PREPARES => false));
@@ -19,33 +17,25 @@ $pdo = new PDO('mysql:host=localhost;dbname=cheshirecat_test;charset=utf8','root
 }
 
 /* 検索値取得 */
-$corpName = $_REQUEST['corpName'];
-$corpNameKana = $_REQUEST['corpNameKana'];
-$clientAdmin = $_REQUEST['clientAdmin'];
-$corpAddress = $_REQUEST['corpAddress'];
-$inchangeName = $_REQUEST['inchangeName'];
-$inchangeKana = $_REQUEST['inchangeKana'];
+$corpName = trim($_REQUEST['corpName']);
+$corpNameKana = trim($_REQUEST['corpNameKana']);
+$clientAdmin = trim($_REQUEST['clientAdmin']);
+$corpAddress = trim($_REQUEST['corpAddress']);
+$inchangeName = trim($_REQUEST['inchangeName']);
+$inchangeKana = trim($_REQUEST['inchangeKana']);
+
+
 
 try {
-/*
-$data = array($corpName, $corpNameKana, $clientAdmin, $corpAddress, $inchangeName, $inchangeKana);
-$sql = "SELECT * FROM crient WHERE ".
-implode( ' and ', array_fill(0, count($data), '`data_name` REGEXP ?') );
-$stmt = $pdo->prepare($sql);
 
-//パラメータ用配列を作る
-$stmtParams = array( str_repeat( 's', count($data) ) );
-//$stmtParams[1]～にそれぞれデータを参照渡しする
-//※ここは参照渡しでないとNG
-foreach ($data as $k=>$v){
-  $stmtParams[] = &$data[$k];
+if () {
+
 }
 
-//call_user_func_array経由でbind_paramに渡す
-call_user_func_array(array($stmt, 'bind_param'), $stmtParams);
-*/
+$sql = "SELECT * FROM crient";
 
-$sql = "SELECT * FROM crient WHERE ";
+
+
 $stmt = $pdo->prepare($spl);
 // 実行
 $stmt->execute();
