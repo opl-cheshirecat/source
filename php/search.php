@@ -121,7 +121,7 @@ try {
           print('該当するデータがありません。<br>');
         } else {
           print('<table>');
-          print('<tr>');
+          print('<tr class="search_result_header">');
           print('<th>顧客ID</th>');
           print('<th>顧客管理区分</th>');
           print('<th>会社名</th>');

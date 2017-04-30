@@ -98,3 +98,10 @@ td.header_menu {
   margin-right: 12%;
   text-align: right;
 }
+
+/*----------
+  顧客検索結果
+----------*/
+.search_result_header {
+  background-color: #87ceeb;
+}
