@@ -1,13 +1,10 @@
-<html>
-
+<!DOCTYPE html>
+<html lang="ja">
 <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="stylesheet" type="text/css" href="css/style.css">
-
-  <title>顧客情報登録画面</title>
 </head>
-
 <body>
   <!-- ヘッダ -->
   <div class="header">
@@ -24,6 +21,11 @@
           <td class="header_menu">
             <a href="searchInput.html">
               <p class="header_menu_column">顧客情報検索</p>
+            </a>
+          </td>
+          <td class="header_menu">
+            <a href="php/mailSend.php">
+              <p class="header_menu_column">メール送信</p>
             </a>
           </td>
         </tr>
@@ -205,7 +207,7 @@
           <td align="center">
             <button type="submit" name="regist_apply_button" value="2">
                       <p class="button">登録確認</p>
-                    </button>
+              </button>
           </td>
         </tr>
       </table>
@@ -213,5 +215,4 @@
   </div>
   <!-- 入力部 -->
 </body>
-
 </html>

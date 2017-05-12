@@ -6,35 +6,36 @@ body {
   ヘッダー
 ----------*/
 .header {
-  height:5%;
+  height:40px;
   width:100%;
   background-color:#000000;
 }
 .header_system_name {
   color: #ffffff;
-  font-size: 120%;
+  font-size: 25px;
   height: 100%;
-  margin-left: 5%;
+  margin-left: 40px;
   float: left;
   vertical-align: middle;
+  padding-top: 3px;
 }
 div.header_menu {
   color: #ffffff;
-  height: 100%;
-  margin-left: 28%;
+  height: 40px;
+  margin-left: 300px;
+  padding-top: 7px;
 }
 table.header_menu {
-  width: 40%;
-  height: 100%;
 }
 td.header_menu {
-  padding: 0 5%;
+  padding: 0 8px;
   text-align: center;
   vertical-align: middle;
 }
 .header_menu_column {
+  margin: auto;
   color: #ffffff;
-  font-size: 100%;
+  font-size: 16px;
 }
 
 /*----------
@@ -100,8 +101,30 @@ td.header_menu {
 }
 
 /*----------
-  顧客検索結果
+  顧客検索結果表示
 ----------*/
 .search_result_header {
   background-color: #87ceeb;
+}
+
+/*----------
+  ログイン画面
+----------*/
+.id_input_form {
+  margin-left:20px;
+  width:80%;
+}
+
+/*----------
+  メール送信画面
+----------*/
+.address_list {
+  overflow:scroll;
+  width: 200px;
+  height: 400px;
+}
+.mailForm {
+  overflow:scroll;
+  width: 200px;
+  height: 400px;
 }

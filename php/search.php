@@ -1,4 +1,5 @@
-<html>
+<!DOCTYPE html>
+<html lang="ja">
 <head>
   <title>顧客情報検索画面</title>
   <link rel="stylesheet" type="text/css" href="/cheshirecat/css/style.css">
@@ -17,13 +18,18 @@
       <table class="header_menu">
         <tr>
           <td class="header_menu">
-            <a href="/cheshirecat/index.html">
+            <a href="/cheshirecat/registInput.html">
               <p class="header_menu_column">顧客情報登録</p>
             </a>
           </td>
           <td class="header_menu">
             <a href="/cheshirecat/searchInput.html">
               <p class="header_menu_column">顧客情報検索</p>
+            </a>
+          </td>
+          <td class="header_menu">
+            <a href="mailSend.php">
+              <p class="header_menu_column">メール送信</p>
             </a>
           </td>
         </tr>
@@ -120,7 +126,7 @@ try {
         if ($cnt == 0) {
           print('該当するデータがありません。<br>');
         } else {
-          print('<table>');
+          print('<table border="1" cellspacing="0">');
           print('<tr class="search_result_header">');
           print('<th>顧客ID</th>');
           print('<th>顧客管理区分</th>');
@@ -129,6 +135,7 @@ try {
           print('<th>住所</th>');
           print('<th>担当者氏名</th>');
           print('<th>担当者フリガナ</th>');
+          print('<th>更新</th>');
           print('</tr>');
           while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
             print('<tr>');
@@ -139,9 +146,10 @@ try {
             print('<td>' . $row['CorpAddress'] .'</td>');
             print('<td>' . $row['InchageName'] . '</td>');
             print('<td>' . $row['InchageNameKana'] . '</td>');
+            print('<td><form action="updateInput.php" method="post"><button name="crientId" value="' . $row['CrientId'] . '">更新</button></form></td>');
             print('</tr>');
           }
-          print('<table>');
+          print('</table>');
         }
         // 結果セットを開放
         $result->free();
