@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <title>ログイン画面</title>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+
+<body>
+  <!-- ヘッダ -->
+  <div class="header">
+    <div class="header_system_name">
+      顧客管理システム
+    </div>
+  </div>
+  <form action="php/login.php" method="post">
+    <!-- 入力部 -->
+    <div class="main_flame">
+      <h2 class="main_flame_title">ログイン</h2>
+
+      <table class="id_input_form">
+        <tr>
+          <td class="inputItem">
+            ID
+          </td>
+          <td class="inputForm">
+            <input type="text" name="id">
+          </td>
+        </tr>
+        <tr>
+          <td class="inputItem">
+            パスワード
+          </td>
+          <td class="inputForm">
+            <input type="password" name="password">
+          </td>
+        </tr>
+      </table>
+    </div>
+    <!-- 入力部 -->
+    <!-- ボタン部 -->
+    <table class="button_area" width="80%">
+      <tr>
+        <td align="center">
+          <button type="reset">クリア</button>
+        </td>
+        <td align="center">
+          <button type="submit" name="login_button" value="2">ログイン</button>
+        </td>
+      </tr>
+    </table>
+    <!-- ボタン部 -->
+  </form>
+</body>
+</html>

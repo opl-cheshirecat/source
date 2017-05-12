@@ -1,4 +1,5 @@
-<html>
+<!DOCTYPE html>
+<html lang="ja">
 <head>
   <title>登録完了画面</title>
   <link rel="stylesheet" type="text/css" href="style.css">
