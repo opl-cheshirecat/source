@@ -24,7 +24,9 @@
             </a>
           </td>
           <td class="header_menu">
-            <p class="header_menu_column">顧客情報検索</p>
+            <a href="searchInput.html">
+              <p class="header_menu_column">顧客情報検索</p>
+            </a>
           </td>
           <td class="header_menu">
             <a href="php/mailSend.php">
@@ -45,47 +47,32 @@
         <table class="search_entry">
           <tr>
             <td>
-              会社名
+              企業名
             </td>
             <td>
-              <input type="text" name="corpName" class="basicForm">
+              <input type="text" name="companyName" class="basicForm">
             </td>
             <td></td>
             <td>
-              会社名フリガナ
+              最終アポ日(yyyy/mm/dd)
             </td>
             <td>
-              <input type="text" name="corpNameKana" class="basicForm">
+              <input type="text" name="lastApDate" class="basicForm">
             </td>
           </tr>
           <tr>
             <td>
-              顧客管理区分
+              担当者名
             </td>
             <td>
-              <input type="text" name="clientAdmin" class="basicForm">
-            </td>
-            <td></td>
-            <td>
-              所在地住所
-            </td>
-            <td>
-              <input type="text" name="corpAddress" class="basicForm">
-            </td>
-          </tr>
-          <tr>
-            <td>
-              担当氏名
-            </td>
-            <td>
-              <input type="text" name="inchangeName" class="basicForm">
+              <input type="text" name="contactName" class="basicForm">
             </td>
             <td></td>
             <td>
-              担当フリガナ
+            　案件情報
             </td>
             <td>
-              <input type="text" name="inchangeKana" class="basicForm">
+              <input type="text" name="caseInfo" class="basicForm">
             </td>
           </tr>
         </table>

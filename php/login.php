@@ -14,7 +14,7 @@
   $password = $_REQUEST['password'];
 
   /* データベース接続 */
-  $mysqli = new mysqli("localhost", "root", "root", "cheshirecat_test");
+  $mysqli = new mysqli("localhost", "oplan-inc", "oplaninc0213", "oplan-inc_cheshirecat");
   $mysqli->set_charset("utf8");
   /* SQL */
   $sql = 'SELECT COUNT(*) FROM account WHERE StaffId = ? AND Password = ?';

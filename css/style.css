@@ -82,7 +82,10 @@ td.header_menu {
   margin-top:50px;
 }
 .button {
-  font-size: 25px;
+  font-size: 10px;
+}
+.button_area_2 {
+  mergin-left:200px;
 }
 
 /*----------
@@ -127,4 +130,7 @@ td.header_menu {
   overflow:scroll;
   width: 200px;
   height: 400px;
+}
+.mail_input {
+  vertical-align: top;
 }
