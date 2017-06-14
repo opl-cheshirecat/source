@@ -42,97 +42,58 @@
       <table class="client_input_form">
         <tr>
           <td class="inputItem">
-            会社名
+            企業名
           </td>
           <td class="inputForm">
-            <input type="text" name="corpName" class="basicForm">
+            <input type="text" name="companyName" class="basicForm">
           </td>
         </tr>
         <tr>
           <td class="inputItem">
-            会社名フリガナ
+            最終アポ日(yyyy/mm/dd)
           </td>
           <td class="inputForm">
-            <input type="text" name="corpNameKana" class="basicForm">
+            <input type="text" name="lastApDate" class="basicForm">
           </td>
         </tr>
         <tr>
           <td class="inputItem">
-            顧客管理区分
+            担当者名
           </td>
           <td class="inputForm">
-            <input type="text" name="clientAdmin" class="basicForm">
+            <input type="text" name="contactName" class="basicForm">
           </td>
         </tr>
         <tr>
           <td class="inputItem">
-            代表取締役
+            キャラ
           </td>
           <td class="inputForm">
-            <input type="text" name="corpCEO" class="basicForm">
+            <input type="text" name="contactCharacter" class="basicForm">
           </td>
         </tr>
         <tr>
           <td class="inputItem">
-            代表取締役フリガナ
+            担当者電話番号
           </td>
           <td class="inputForm">
-            <input type="text" name="corpCEOKana" class="basicForm">
+            <input type="text" name="contactTel" class="basicForm">
           </td>
         </tr>
         <tr>
           <td class="inputItem">
-            郵便番号
+            担当者メールアドレス
           </td>
           <td class="inputForm">
-            <input type="text" name="corpZipCode" class="basicForm">
+            <input type="text" name="contactMail" class="basicForm">
           </td>
         </tr>
         <tr>
           <td class="inputItem">
-            所在地住所
+            メール送信用メールアドレス
           </td>
           <td class="inputForm">
-            <input type="text" name="corpAddress" class="basicForm">
-          </td>
-        </tr>
-        <tr>
-          <td class="inputItem">
-            代表連絡先
-          </td>
-          <td>
-          </td>
-        </tr>
-        <tr>
-          <td class="contact_info">
-            TEL
-          </td>
-          <td class="inputForm">
-            <input type="text" name="corpTel" class="basicForm">
-          </td>
-        </tr>
-        <tr>
-          <td class="contact_info">
-            FAX
-          </td>
-          <td class="inputForm">
-            <input type="text" name="corpFax" class="basicForm">
-          </td>
-        </tr>
-        <tr>
-          <td class="contact_info">
-            MAIL1
-          </td>
-          <td class="inputForm">
-            <input type="text" name="corpMail1" class="basicForm">
-          </td>
-        </tr>
-        <tr>
-          <td class="contact_info">
-            MAIL2
-          </td>
-          <td class="inputForm">
-            <input type="text" name="corpMail2" class="basicForm">
+            <input type="text" name="sendMail" class="basicForm">
           </td>
         </tr>
         <tr>
@@ -140,77 +101,26 @@
             ホームページ
           </td>
           <td class="inputForm">
-            <input type="text" name="corpHP" class="basicForm">
-          </td>
-        </tr>
-        <tr>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-        </tr>
-        <tr>
-          <td class="inputItem">
-            担当氏名
-          </td>
-          <td class="inputForm">
-            <input type="text" name="inchangeName" class="basicForm">
+            <input type="text" name="webPage" class="basicForm">
           </td>
         </tr>
         <tr>
           <td class="inputItem">
-            担当フリガナ
+            案件情報
           </td>
           <td class="inputForm">
-            <input type="text" name="inchangeKana" class="basicForm">
+            <textarea name="caseInfo" class="basicForm" cols=50 rows=5></textarea>
           </td>
         </tr>
         <tr>
-          <td class="inputItem">
-            担当直通TEL
-          </td>
-          <td class="inputForm">
-            <input type="text" name="inchangeTel" class="basicForm">
-          </td>
-        </tr>
-        <tr>
-          <td class="inputItem">
-            担当MAIL
-          </td>
-          <td class="inputForm">
-            <input type="text" name="inchangeMail" class="basicForm">
-          </td>
-        </tr>
-        <tr>
-          <td class="inputItem">
-            担当所属部課
-          </td>
-          <td class="inputForm">
-            <input type="text" name="inchangeAffiliation" class="basicForm">
-          </td>
-        </tr>
-        <tr>
-          <td valign="top" class="inputItem">
-            備考
-          </td>
-          <td class="inputForm">
-            <textarea name="inchangeRemarks" rows="10" class="basicForm"></textarea>
-          </td>
-        </tr>
       </table>
 
-      <table class="button_area" width="80%">
-        <tr>
-          <td align="center">
-            <button type="submit" name="druft_button" value="1">
-                      <p class="button">下書き保存</p>
-                    </button>
-          </td>
-          <td align="center">
-            <button type="submit" name="regist_apply_button" value="2">
-                      <p class="button">登録確認</p>
-              </button>
-          </td>
-        </tr>
-      </table>
+      <br>
+      <div class="button_area_2">
+        <button type="submit" value="1">
+          <p>登録</p>
+        </button>
+      </div>
     </form>
   </div>
   <!-- 入力部 -->

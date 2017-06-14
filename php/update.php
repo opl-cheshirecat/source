@@ -17,7 +17,7 @@
       <table class="header_menu">
         <tr>
           <td class="header_menu">
-            <a href="/cheshirecat/registInput.html">
+            <a href="/cheshirecat/index.html">
               <p class="header_menu_column">顧客情報登録</p>
             </a>
           </td>
@@ -42,35 +42,26 @@
     <?php
     /* 入力値取得 */
     $crientId = $_REQUEST['crientId'];
-    $corpName = $_REQUEST['corpName'];
-    $corpNameKana = $_REQUEST['corpNameKana'];
-    $clientAdmin = $_REQUEST['clientAdmin'];
-    $corpCEO = $_REQUEST['corpCEO'];
-    $corpCEOKana = $_REQUEST['corpCEOKana'];
-    $corpZipCode = $_REQUEST['corpZipCode'];
-    $corpAddress = $_REQUEST['corpAddress'];
-    $corpTel = $_REQUEST['corpTel'];
-    $corpFax = $_REQUEST['corpFax'];
-    $corpMail1 = $_REQUEST['corpMail1'];
-    $corpMail2 = $_REQUEST['corpMail2'];
-    $corpHP = $_REQUEST['corpHP'];
-    $inchangeName = $_REQUEST['inchangeName'];
-    $inchangeKana = $_REQUEST['inchangeKana'];
-    $inchangeTel = $_REQUEST['inchangeTel'];
-    $inchangeMail = $_REQUEST['inchangeMail'];
-    $inchangeAffiliation = $_REQUEST['inchangeAffiliation'];
-    $remarks = $_REQUEST['inchangeRemarks'];
+    $companyName = $_REQUEST['companyName'];
+    $lastApDate = $_REQUEST['lastApDate'];
+    $contactName = $_REQUEST['contactName'];
+    $contactCharacter = $_REQUEST['contactCharacter'];
+    $contactTel = $_REQUEST['contactTel'];
+    $contactMail = $_REQUEST['contactMail'];
+    $sendMail = $_REQUEST['sendMail'];
+    $webPage = $_REQUEST['webPage'];
+    $caseInfo = $_REQUEST['caseInfo'];
 
     /* データベース接続 */
-    $mysqli = new mysqli("localhost", "root", "root", "cheshirecat_test");
+    $mysqli = new mysqli("mysql415.db.sakura.ne.jp", "oplan-inc", "oplaninc0213", "oplan-inc_cheshirecat");
     $mysqli->set_charset("utf8");
     /* SQL */
-    $sql = 'UPDATE crient SET CorprationName = ? , CorprationNameKana = ?, CrientAdmin = ?, CorpCEOName = ?, CorpCEONameKana = ?, PostalCode = ?, CorpAddress = ?, CorpTelNumber = ?, CorpFaxNumber = ?, CorpMail1 = ?, CorpMail2 = ?, CorpHP = ?, InchageName = ?, InchageNameKana=?, InchageTelNumber=?, InchageMail = ?, InchageAffiliation = ?, Remarks = ? WHERE CrientId = ?';
+    $sql = 'UPDATE crient SET CompanyName = ?, LastApDate = ?, ContactName = ?, ContactCharacter = ?, ContactTel = ?, ContactMail = ?, SendMail = ?, WebPage = ?, CaseInfo = ? WHERE CrientId = ?';
 
     /* プリペアドステートメント */
     if ($stmt = $mysqli->prepare($sql)) {
       /* 変数のバインド */
-      $stmt->bind_param('ssisssssssssssssssi', $corpName, $corpNameKana, $clientAdmin, $corpCEO, $corpCEOKana, $corpZipCode, $corpAddress, $corpTel, $corpFax, $corpMail1, $corpMail2, $corpHP, $inchangeName, $inchangeKana, $inchangeTel, $inchangeMail, $inchangeAffiliation, $remarks, $crientId);
+      $stmt->bind_param('sssssssssi', $companyName, $lastApDate, $contactName, $contactCharacter, $contactTel, $contactMail, $sendMail, $webPage, $caseInfo, $crientId);
 
       /* プリペアドステートメント実行 */
       if ($stmt->execute()) {
@@ -78,105 +69,58 @@
         print('<table class="client_input_form">');
         print('<tr>');
         print('<td class="inputItem">');
-        print('顧客ID');
+        print('企業名');
         print('</td>');
         print('<td class="inputForm">');
-        print($crientId);
+        print($companyName);
         print('</td>');
         print('</tr>');
         print('<tr>');
         print('<td class="inputItem">');
-        print('会社名');
+        print('最終アポ日');
         print('</td>');
         print('<td class="inputForm">');
-        print($corpName);
+        print($lastApDate);
         print('</td>');
         print('</tr>');
         print('<tr>');
         print('<td class="inputItem">');
-        print('会社名フリガナ');
+        print('担当者名');
         print('</td>');
         print('<td class="inputForm">');
-        print($corpNameKana);
+        print($contactName);
         print('</td>');
         print('</tr>');
         print('<tr>');
         print('<td class="inputItem">');
-        print('顧客管理区分');
+        print('キャラ');
         print('</td>');
         print('<td class="inputForm">');
-        print($clientAdmin);
+        print($contactCharacter);
         print('</td>');
         print('</tr>');
         print('<tr>');
         print('<td class="inputItem">');
-        print('代表取締役');
+        print('担当者電話番号');
         print('</td>');
         print('<td class="inputForm">');
-        print($corpCEO);
+        print($contactTel);
         print('</td>');
         print('</tr>');
         print('<tr>');
         print('<td class="inputItem">');
-        print('代表取締役フリガナ');
+        print('担当者メールアドレス');
         print('</td>');
         print('<td class="inputForm">');
-        print($corpCEOKana);
+        print($contactMail);
         print('</td>');
         print('</tr>');
         print('<tr>');
         print('<td class="inputItem">');
-        print('郵便番号');
+        print('送信用メールアドレス');
         print('</td>');
         print('<td class="inputForm">');
-        print($corpZipCode);
-        print('</td>');
-        print('</tr>');
-        print('<tr>');
-        print('<td class="inputItem">');
-        print('所在地住所');
-        print('</td>');
-        print('<td class="inputForm">');
-        print($corpAddress);
-        print('</td>');
-        print('</tr>');
-        print('<tr>');
-        print('<td class="inputItem">');
-        print('代表連絡先');
-        print('</td>');
-        print('<td>');
-        print('</td>');
-        print('</tr>');
-        print('<tr>');
-        print('<td class="contact_info">');
-        print('TEL');
-        print('</td>');
-        print('<td class="inputForm">');
-        print($corpTel);
-        print('</td>');
-        print('</tr>');
-        print('<tr>');
-        print('<td class="contact_info">');
-        print('FAX');
-        print('</td>');
-        print('<td class="inputForm">');
-        print($corpFax);
-        print('</td>');
-        print('</tr>');
-        print('<tr>');
-        print('<td class="contact_info">');
-        print('MAIL1');
-        print('</td>');
-        print('<td class="inputForm">');
-        print($corpMail1);
-        print('</td>');
-        print('</tr>');
-        print('<tr>');
-        print('<td class="contact_info">');
-        print('MAIL2');
-        print('</td>');
-        print('<td class="inputForm">');
-        print($corpMail2);
+        print($sendMail);
         print('</td>');
         print('</tr>');
         print('<tr>');
@@ -184,59 +128,15 @@
         print('ホームページ');
         print('</td>');
         print('<td class="inputForm">');
-        print($corpHP);
-        print('</td>');
-        print('</tr>');
-        print('<tr>');
-        print('<td>&nbsp;</td>');
-        print('<td>&nbsp;</td>');
-        print('</tr>');
-        print('<tr>');
-        print('<td class="inputItem">');
-        print('担当氏名');
-        print('</td>');
-        print('<td class="inputForm">');
-        print($inchangeName);
+        print($webPage);
         print('</td>');
         print('</tr>');
         print('<tr>');
         print('<td class="inputItem">');
-        print('担当フリガナ');
+        print('案件情報');
         print('</td>');
         print('<td class="inputForm">');
-        print($inchangeKana);
-        print('</td>');
-        print('</tr>');
-        print('<tr>');
-        print('<td class="inputItem">');
-        print('担当直通TEL');
-        print('</td>');
-        print('<td class="inputForm">');
-        print($inchangeTel);
-        print('</td>');
-        print('</tr>');
-        print('<tr>');
-        print('<td class="inputItem">');
-        print('担当MAIL');
-        print('</td>');
-        print('<td class="inputForm">');
-        print($inchangeMail);
-        print('</td>');
-        print('</tr>');
-        print('<tr>');
-        print('<td class="inputItem">');
-        print('担当所属部課');
-        print('</td>');
-        print('<td class="inputForm">');
-        print($inchangeAffiliation);
-        print('</td>');
-        print('</tr>');
-        print('<tr>');
-        print('<td valign="top" class="inputItem">');
-        print('備考');
-        print('</td>');
-        print('<td class="inputForm">');
-        print($remarks);
+        print($caseInfo);
         print('</td>');
         print('</tr>');
         print('</table>');

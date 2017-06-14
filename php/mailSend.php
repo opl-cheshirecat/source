@@ -34,121 +34,108 @@
   </div>
   <!-- ヘッダ -->
   <div class="main_flame">
+    <h2 class="main_flame_title">メール送信</h2>
+    <form action="mail.php" method="post">
 
-  <form action="mail.php" method="post">
-  <!-- メールフォーム -->
-  <table>
-    <tr>
-      <td>
-        <!-- メール内容入力 -->
-          <div class="mailForm">
-        <table>
-          <tr>
-            <td>
-              送信元アドレス
-            </td>
-            <td>
-              <input type="text" name="mailSource" class="mailSourceInput">
-            </td>
-          </tr>
-          <tr>
-            <td>
-              件名
-            </td>
-            <td>
-              <input type="text" name="mailSubject" class="mailSubjectInput">
-            </td>
-          </tr>
-          <tr>
-            <td>
-              本文
-            </td>
-            <td>
-              <textarea rows="25" name="mailText" class="mailTextInput"></textarea>
-            </td>
-          </tr>
-        </table>
-      </div>
-        <!-- メール内容入力 -->
-      </td>
-      <td>
-        <!-- アドレス一覧 -->
-        <div class="address_list">
-        <table border="1" cellspacing="0">
-          <tr>
-            <th>
-            </th>
-            <th>
-              会社名
-            </th>
-            <th>
-              担当者名
-            </th>
-            <th>
-              メールアドレス
-            </th>
-          </tr>
-          <?php
-            /* データベース接続 */
-            $mysqli = new mysqli("localhost", "root", "root", "cheshirecat_test");
-            $mysqli->set_charset("utf8");
-            $sql = 'SELECT CorprationName, InchageName, InchageMail FROM crient';
+      <!-- メール内容入力 -->
+      <table border="0" >
+        <tr>
+          <td>
+            送信元アドレス
+          </td>
+          <td>
+            <input type="text" name="mailSource" size=50>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            件名
+          </td>
+          <td>
+            <input type="text" name="mailSubject" size=50>
+          </td>
+        </tr>
+        <tr>
+          <td class="mail_input">
+            本文
+          </td>
+          <td>
+            <textarea name="mailText" rows=50 cols=80></textarea>
+          </td>
+        </tr>
+      </table>
+      <!-- メール内容入力 -->
 
-            /* プリペアドステートメント */
-            if ($stmt = $mysqli->prepare($sql)) {
-              /* プリペアドステートメント実行 */
-              if ($stmt->execute()) {
-                /* 結果取得 */
-                $result = $stmt->get_result();
-                $cnt = $result->num_rows;
+      <!-- アドレス一覧 -->
+      <table border="1" cellspacing="0">
+        <tr>
+          <th>
+          </th>
+          <th>
+            企業名
+          </th>
+          <th>
+            担当者名
+          </th>
+          <th>
+            送信用メールアドレス
+          </th>
+        </tr>
 
-                /* 結果出力 */
-                if ($cnt == 0) {
-                  print('該当するデータがありません。');
-                } else {
-                  while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
-                    print('<tr>');
-                    print('<td>');
-                    print('<input type="checkbox" name="mailTerget[]" value="' . $row['InchageMail'] . '"');
-                    print('</td>');
-                    print('<td>');
-                    print($row['CorprationName']);
-                    print('</td>');
-                    print('<td>');
-                    print($row['InchageName']);
-                    print('</td>');
-                    print('<td>');
-                    print($row['InchageMail']);
-                    print('</td>');
-                    print('</tr>');
-                  }
+        <?php
+          /* データベース接続 */
+          $mysqli = new mysqli("mysql415.db.sakura.ne.jp", "oplan-inc", "oplaninc0213", "oplan-inc_cheshirecat");
+          $mysqli->set_charset("utf8");
+          $sql = 'SELECT CompanyName, ContactName, SendMail FROM crient ORDER BY CrientId';
+
+          /* プリペアドステートメント */
+          if ($stmt = $mysqli->prepare($sql)) {
+            /* プリペアドステートメント実行 */
+            if ($stmt->execute()) {
+              /* 結果取得 */
+              $result = $stmt->get_result();
+              $cnt = $result->num_rows;
+
+              /* 結果出力 */
+              if ($cnt != 0) {
+                while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
+                  print('<tr>');
+                  print('<td>');
+                  print('<input type="checkbox" name="mailTerget[]" value="' . $row['SendMail'] . '"');
+                  print('</td>');
+                  print('<td>');
+                  print($row['CompanyName']);
+                  print('</td>');
+                  print('<td>');
+                  print($row['ContactName']);
+                  print('</td>');
+                  print('<td>');
+                  print($row['SendMail']);
+                  print('</td>');
+                  print('</tr>');
                 }
-
-                // 結果セットを開放
-                $result->free();
               }
-            }
-              // ステートメントの終了
-              $stmt->close();
-              // 接続の終了
-              $mysqli->close();
-          ?>
-        </table>
-      </div>
-        <!-- アドレス一覧 -->
-      </td>
-    </tr>
-  </table>
-  <!-- メールフォーム -->
-  <table class="button_area" width="80%">
-    <tr>
-      <td>
-        <button type="submit" name="mail_button" value="1">メール送信</button>
-      </td>
-    </tr>
-  </table>
-</form>
 
-</div>
+              // 結果セットを開放
+              $result->free();
+            }
+          }
+          // 接続の終了
+          $mysqli->close();
+        ?>
+
+      </table>
+
+      <!-- メールフォーム -->
+      <table class="button_area" width="80%">
+        <tr>
+          <td>
+            <button type="submit" name="mail_button" value="1">メール送信</button>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+
 </body>
 </html>
