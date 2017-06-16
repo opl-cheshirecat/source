@@ -40,13 +40,6 @@
 
 <?php
 
-/* データベース接続 */
-try{
-$pdo = new PDO('mysql:host=mysql415.db.sakura.ne.jp;dbname=oplan-inc_cheshirecat;charset=utf8','oplan-inc','oplaninc0213',array(PDO::ATTR_EMULATE_PREPARES => false));
-} catch (PDOException $e) {
- exit('データベース接続失敗。'.$e->getMessage());
-}
-
 /* 入力値取得 */
 $companyName = $_REQUEST['companyName'];
 $lastApDate = $_REQUEST['lastApDate'];
@@ -58,25 +51,25 @@ $sendMail = $_REQUEST['sendMail'];
 $webPage = $_REQUEST['webPage'];
 $caseInfo = $_REQUEST['caseInfo'];
 
-try{
-/* データ登録 */
-$stmt = $pdo -> prepare("INSERT INTO crient ( CompanyName, LastApDate, ContactName, ContactCharacter, ContactTel, ContactMail, SendMail, WebPage, CaseInfo) VALUES ( :CompanyName, :LastApDate, :ContactName, :ContactCharacter, :ContactTel, :ContactMail, :SendMail, :WebPage, :CaseInfo);");
-$stmt->bindValue(':CompanyName', $companyName, PDO::PARAM_STR);
-$stmt->bindValue(':LastApDate', $lastApDate, PDO::PARAM_STR);
-$stmt->bindValue(':ContactName', $contactName, PDO::PARAM_STR);
-$stmt->bindValue(':ContactCharacter', $contactCharacter, PDO::PARAM_STR);
-$stmt->bindValue(':ContactTel', $contactTel, PDO::PARAM_STR);
-$stmt->bindValue(':ContactMail', $contactMail, PDO::PARAM_STR);
-$stmt->bindValue(':SendMail', $sendMail, PDO::PARAM_STR);
-$stmt->bindValue(':WebPage', $webPage, PDO::PARAM_STR);
-$stmt->bindValue(':CaseInfo', $caseInfo, PDO::PARAM_STR);
+/* データベース接続 */
+require "dbConnector.php";
+$mysqli = dbConnect();
+$mysqli->set_charset("utf8");
+/* SQL */
+$sql = 'INSERT INTO crient ( CompanyName, LastApDate, ContactName, ContactCharacter, ContactTel, ContactMail, SendMail, WebPage, CaseInfo) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?)';
 
-$stmt->execute();
+/* プリペアドステートメント */
+if ($stmt = $mysqli->prepare($sql)) {
+  /* 変数のバインド */
+  $stmt->bind_param('sssssssss', $companyName, $lastApDate, $contactName, $contactCharacter, $contactTel, $contactMail, $sendMail, $webPage, $caseInfo);
 
-print("<p>顧客情報登録完了</p>");
+  /* プリペアドステートメント実行 */
+  if ($stmt->execute()) {
+    print("<p>顧客情報登録完了</p>");
+  } else {
+    print("<p>顧客情報登録失敗</p>");
+  }
 
-} catch (PDOException $e) {
- exit('顧客情報登録失敗。'.$e->getMessage());
 }
 
 ?>

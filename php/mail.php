@@ -16,12 +16,12 @@
       <table class="header_menu">
         <tr>
           <td class="header_menu">
-            <a href="/cheshirecat/index.html">
+            <a href="../index.html">
               <p class="header_menu_column">顧客情報登録</p>
             </a>
           </td>
           <td class="header_menu">
-            <a href="/cheshirecat/searchInput.html">
+            <a href="../searchInput.html">
               <p class="header_menu_column">顧客情報検索</p>
             </a>
           </td>
@@ -45,22 +45,57 @@
     $mailSource = $_REQUEST['mailSource'];
     $mailSubject = $_REQUEST['mailSubject'];
     $mailText = $_REQUEST['mailText'];
-    $headers = 'From: ' . $mailSource . '\n';
 
-    /* 配列分ループ */
-    /* $address) {
+    /* アップロードファイルパス取得　*/
+    $filePath1 = $_FILES["attachmentFile1"]["tmp_name"];
+    $filePath2 = $_FILES["attachmentFile2"]["tmp_name"];
+    $filePath3 = $_FILES["attachmentFile3"]["tmp_name"];
+    $filePath4 = $_FILES["attachmentFile4"]["tmp_name"];
+    $filePath5 = $_FILES["attachmentFile5"]["tmp_name"];
+    /* アップロードファイルのtype取得 */
+    $fileType1 = $_FILES["attachmentFile1"]["type"];
+    $fileType2 = $_FILES["attachmentFile2"]["type"];
+    $fileType3 = $_FILES["attachmentFile3"]["type"];
+    $fileType4 = $_FILES["attachmentFile4"]["type"];
+    $fileType5 = $_FILES["attachmentFile5"]["type"];
 
-      if (mb_send_mail($address, $mailSubject, $mailText, $headers)) {
-        print('送信成功');
-      } else {
-        print('送信失敗');
+    /* メールデータ作成 */
+    $boundary = "__BOUNDARY__";
+
+    $additional_headers = "Content-Type: multipart/mixed;boundary=\"" . $boundary . "\"\n";
+    $additional_headers .= "From: " . $mailSource;
+
+    $message = "--" . $boundary . "\n";
+
+    $message .= "Content-Type: text/plain; charset=\"ISO-2022-JP\"\n\n";
+    $message .= $mailText . "\n";
+
+    $message .= "--" . $boundary . "\n";
+
+    $message .= "Content-Type: " . mime_content_type($fileType1) . "; name=\"" . basename($filePath1) . "\"\n";
+    $message .= "Content-Disposition: attachment; filename=\"" . basename($filePath1) . "\"\n";
+    $message .= "Content-Transfer-Encoding: base64\n";
+    $message .= "\n";
+    $message .= chunk_split(base64_encode(file_get_contents($filePath1)))."\n";
+
+    $message .= "--" . $boundary . "--";
+
+    /* 送信アドレス分ループ */
+    $errFlg = "0";
+    foreach ($mailTerget as $targetAddress) {
+
+      /* メール送信 */
+      if (!mb_send_mail($targetAddress, $mailSubject, $mailText, $headers)) {
+        /* メール送信失敗時の処理を実装 */
+        $errFlg = "1";
       }
-
     }
-    */
 
-    mb_send_mail("hrkysd.s@gmail.com", "sub", "text", "From:h.yoshida@oplan.co.jp");
-
+    if ($errFlg == "0") {
+      print("<p>メール送信完了</p>");
+    } else {
+      print("<p>メール送信失敗</p>");
+    }
   ?>
 
 </div>

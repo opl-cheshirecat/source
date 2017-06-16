@@ -16,12 +16,12 @@
       <table class="header_menu">
         <tr>
           <td class="header_menu">
-            <a href="/cheshirecat/index.html">
+            <a href="../index.html">
               <p class="header_menu_column">顧客情報登録</p>
             </a>
           </td>
           <td class="header_menu">
-            <a href="/cheshirecat/searchInput.html">
+            <a href="../searchInput.html">
               <p class="header_menu_column">顧客情報検索</p>
             </a>
           </td>
@@ -35,7 +35,7 @@
   <!-- ヘッダ -->
   <div class="main_flame">
     <h2 class="main_flame_title">メール送信</h2>
-    <form action="mail.php" method="post">
+    <form action="mail.php" enctype="multipart/form-data" method="post">
 
       <!-- メール内容入力 -->
       <table border="0" >
@@ -60,7 +60,47 @@
             本文
           </td>
           <td>
-            <textarea name="mailText" rows=50 cols=80></textarea>
+            <textarea name="mailText" rows=30 cols=50></textarea>
+          </td>
+        </tr>
+        <tr>
+          <td class="mail_input">
+            添付ファイル１
+          </td>
+          <td>
+            <input type="file" name="attachmentFile1" size=50>
+          </td>
+        </tr>
+        <tr>
+          <td class="mail_input">
+            添付ファイル２
+          </td>
+          <td>
+            <input type="file" name="attachmentFile2" size=50>
+          </td>
+        </tr>
+        <tr>
+          <td class="mail_input">
+            添付ファイル３
+          </td>
+          <td>
+            <input type="file" name="attachmentFile3" size=50>
+          </td>
+        </tr>
+        <tr>
+          <td class="mail_input">
+            添付ファイル４
+          </td>
+          <td>
+            <input type="file" name="attachmentFile4" size=50>
+          </td>
+        </tr>
+        <tr>
+          <td class="mail_input">
+            添付ファイル５
+          </td>
+          <td>
+            <input type="file" name="attachmentFile5" size=50>
           </td>
         </tr>
       </table>
@@ -84,7 +124,8 @@
 
         <?php
           /* データベース接続 */
-          $mysqli = new mysqli("mysql415.db.sakura.ne.jp", "oplan-inc", "oplaninc0213", "oplan-inc_cheshirecat");
+          require "dbConnector.php";
+          $mysqli = dbConnect();
           $mysqli->set_charset("utf8");
           $sql = 'SELECT CompanyName, ContactName, SendMail FROM crient ORDER BY CrientId';
 

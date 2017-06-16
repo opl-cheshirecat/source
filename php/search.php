@@ -18,12 +18,12 @@
       <table class="header_menu">
         <tr>
           <td class="header_menu">
-            <a href="/cheshirecat/index.html">
+            <a href="../index.html">
               <p class="header_menu_column">顧客情報登録</p>
             </a>
           </td>
           <td class="header_menu">
-            <a href="/cheshirecat/searchInput.html">
+            <a href="../searchInput.html">
               <p class="header_menu_column">顧客情報検索</p>
             </a>
           </td>
@@ -92,7 +92,8 @@ foreach ($sqlParams as $key => $value) {
 
 try {
   /* データベース接続 */
-  $mysqli = new mysqli("mysql415.db.sakura.ne.jp", "oplan-inc", "oplaninc0213", "oplan-inc_cheshirecat");
+  require "dbConnector.php";
+  $mysqli = dbConnect();
   $mysqli->set_charset("utf8");
 
   // プリペアドステートメント
