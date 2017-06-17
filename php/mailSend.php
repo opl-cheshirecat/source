@@ -26,7 +26,9 @@
             </a>
           </td>
           <td class="header_menu">
+            <a href="mailSend.php">
               <p class="header_menu_column">メール送信</p>
+            </a>
           </td>
         </tr>
       </table>

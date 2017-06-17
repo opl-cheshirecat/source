@@ -18,12 +18,12 @@
       <table class="header_menu">
         <tr>
           <td class="header_menu">
-            <a href="/cheshirecat/index.html">
+            <a href="../index.html">
               <p class="header_menu_column">顧客情報登録</p>
             </a>
           </td>
           <td class="header_menu">
-            <a href="/cheshirecat/searchInput.html">
+            <a href="../searchInput.html">
               <p class="header_menu_column">顧客情報検索</p>
             </a>
           </td>
