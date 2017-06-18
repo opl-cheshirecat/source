@@ -4,6 +4,8 @@
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="stylesheet" type="text/css" href="/cheshirecat/css/style.css">
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
 </head>
 <body>
   <!-- ヘッダ -->
@@ -109,9 +111,11 @@
       <!-- メール内容入力 -->
 
       <!-- アドレス一覧 -->
+      <div id="targets">
       <table border="1" cellspacing="0">
         <tr>
           <th>
+            <input type="checkbox" name="mailTerget_all" id="mailTerget_all" />
           </th>
           <th>
             企業名
@@ -144,7 +148,7 @@
                 while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
                   print('<tr>');
                   print('<td>');
-                  print('<input type="checkbox" name="mailTerget[]" value="' . $row['SendMail'] . '"');
+                  print('<input type="checkbox" name="mailTerget[]" value="' . $row['SendMail'] . '" class="check" />');
                   print('</td>');
                   print('<td>');
                   print($row['CompanyName']);
@@ -168,6 +172,7 @@
         ?>
 
       </table>
+    </div>
 
       <!-- メールフォーム -->
       <table class="button_area" width="80%">
@@ -179,6 +184,22 @@
       </table>
     </form>
   </div>
+
+  <script type="text/javascript">
+    $(function() {
+      $('#mailTerget_all').on('click', function() {
+        $('.check').prop('checked', this.checked);
+      });
+
+      $('.check').on('click', function() {
+        if ($('#targets :checked').length == $('#targets :input').length){
+          $('#mailTerget_all').prop('checked', 'checked');
+        }else{
+          $('#mailTerget_all').prop('checked', false);
+        }
+      });
+    });
+  </script>
 
 </body>
 </html>
