@@ -141,6 +141,8 @@
       }
     }
 
+    mb_send_mail("sales@oplan.co.jp", $mailSubject, $message, $additional_headers);
+
     if ($errFlg == "0") {
       print("<p>メール送信完了</p>");
     } else {
