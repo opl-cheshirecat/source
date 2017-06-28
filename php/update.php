@@ -1,43 +1,32 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <title>顧客情報詳細画面</title>
-  <link rel="stylesheet" type="text/css" href="/cheshirecat/css/style.css">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-</head>
-<body>
-  <!-- ヘッダ -->
-  <div class="header">
-    <div class="header_system_name">
-      顧客管理システム
-    </div>
+<?php
 
-    <div class="header_menu">
-      <table class="header_menu">
-        <tr>
-          <td class="header_menu">
-            <a href="../index.html">
-              <p class="header_menu_column">顧客情報登録</p>
-            </a>
-          </td>
-          <td class="header_menu">
-            <a href="../searchInput.html">
-              <p class="header_menu_column">顧客情報検索</p>
-            </a>
-          </td>
-          <td class="header_menu">
-            <a href="mailSend.php">
-              <p class="header_menu_column">メール送信</p>
-            </a>
-          </td>
-        </tr>
-      </table>
-    </div>
+  session_start();
+
+  if(!isset($_SESSION["username"])) {
+    header("Location: ../index.php");
+    exit;
+  }
+?>
+
+<?php include('../header.html'); ?>
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <a class="navbar-brand text-muted">顧客管理システム</a>
+    <ul class="nav navbar-nav navbar-right" id="nav">
+      <li><a href="../registInput.php">顧客情報登録</a></li>
+      <li class="active"><a href="../searchInput.php">顧客情報検索</a></li>
+      <li><a href="mailSend.php">メール送信</a></li>
+      <li><a href="userRegist.php">ユーザ登録</a></li>
+    </ul>
   </div>
-  <!-- ヘッダ -->
-  <!-- 顧客情報更新 -->
-  <div class="main_flame">
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-5"><h2>顧客情報更新</h2></div>
+  </div>
+
 
     <?php
     /* 入力値取得 */
@@ -66,90 +55,75 @@
 
       /* プリペアドステートメント実行 */
       if ($stmt->execute()) {
-        print('<p>顧客情報を更新しました。</p>');
-        print('<table class="client_input_form">');
-        print('<tr>');
-        print('<td class="inputItem">');
-        print('企業名');
-        print('</td>');
-        print('<td class="inputForm">');
-        print($companyName);
-        print('</td>');
-        print('</tr>');
-        print('<tr>');
-        print('<td class="inputItem">');
-        print('最終アポ日');
-        print('</td>');
-        print('<td class="inputForm">');
-        print($lastApDate);
-        print('</td>');
-        print('</tr>');
-        print('<tr>');
-        print('<td class="inputItem">');
-        print('担当者名');
-        print('</td>');
-        print('<td class="inputForm">');
-        print($contactName);
-        print('</td>');
-        print('</tr>');
-        print('<tr>');
-        print('<td class="inputItem">');
-        print('キャラ');
-        print('</td>');
-        print('<td class="inputForm">');
-        print($contactCharacter);
-        print('</td>');
-        print('</tr>');
-        print('<tr>');
-        print('<td class="inputItem">');
-        print('担当者電話番号');
-        print('</td>');
-        print('<td class="inputForm">');
-        print($contactTel);
-        print('</td>');
-        print('</tr>');
-        print('<tr>');
-        print('<td class="inputItem">');
-        print('担当者メールアドレス');
-        print('</td>');
-        print('<td class="inputForm">');
-        print($contactMail);
-        print('</td>');
-        print('</tr>');
-        print('<tr>');
-        print('<td class="inputItem">');
-        print('送信用メールアドレス');
-        print('</td>');
-        print('<td class="inputForm">');
-        print($sendMail);
-        print('</td>');
-        print('</tr>');
-        print('<tr>');
-        print('<td class="inputItem">');
-        print('ホームページ');
-        print('</td>');
-        print('<td class="inputForm">');
-        print($webPage);
-        print('</td>');
-        print('</tr>');
-        print('<tr>');
-        print('<td class="inputItem">');
-        print('案件情報');
-        print('</td>');
-        print('<td class="inputForm">');
-        print($caseInfo);
-        print('</td>');
-        print('</tr>');
-        print('</table>');
+        print('<div class="row">');
+          print('<div class="col-xs-5"><p>顧客情報を更新しました。</p></div>');
+        print('</div>');
+        print('<div class="col-xs-offset-1 col-xs-11">');
+          print('<div class="col-xs-4">');
+            print('<p>企業名</p>');
+          print('</div>');
+          print('<div class="col-xs-8">');
+            print('<p>' . $companyName . '</p>');
+          print('</div>');
+          print('<div class="col-xs-4">');
+            print('<p>最終アポ日</p>');
+          print('</div>');
+          print('<div class="col-xs-8">');
+            print('<p>' . $lastApDate . '</p>');
+          print('</div>');
+          print('<div class="col-xs-4">');
+            print('<p>担当者名</p>');
+          print('</div>');
+          print('<div class="col-xs-8">');
+            print('<p>' . $contactName . '</p>');
+          print('</div>');
+          print('<div class="col-xs-4">');
+            print('<p>キャラ</p>');
+          print('</div>');
+          print('<div class="col-xs-8">');
+            print('<p>' . $contactCharacter . '</p>');
+          print('</div>');
+          print('<div class="col-xs-4">');
+            print('<p>担当者電話番号</p>');
+          print('</div>');
+          print('<div class="col-xs-8">');
+            print('<p>' . $contactTel . '</p>');
+          print('</div>');
+          print('<div class="col-xs-4">');
+            print('<p>担当者メールアドレス</p>');
+          print('</div>');
+          print('<div class="col-xs-8">');
+            print('<p>' . $contactMail . '</p>');
+          print('</div>');
+          print('<div class="col-xs-4">');
+            print('<p>送信用メールアドレス</p>');
+          print('</div>');
+          print('<div class="col-xs-8">');
+            print('<p>' . $sendMail . '</p>');
+          print('</div>');
+          print('<div class="col-xs-4">');
+            print('<p>ホームページ</p>');
+          print('</div>');
+          print('<div class="col-xs-8">');
+            print('<p>' . $webPage . '</p>');
+          print('</div>');
+          print('<div class="col-xs-4">');
+            print('<p>案件情報</p>');
+          print('</div>');
+          print('<div class="col-xs-8">');
+            print('<p>' . $caseInfo . '</p>');
+          print('</div>');
+        print('</div>');
+
       } else {
-        print('<p>顧客情報の更新に失敗しました。</p>');
+        print('<div class="row">');
+          print('<div class="col-xs-5"><p>顧客情報の更新に失敗しました。</p></div>');
+        print('</div>');
       }
     }
 
     ?>
 
-  </div>
-  <!-- 顧客情報更新 -->
+</div>
 
-</body>
-</html>
+<?php include('../footer.html'); ?>

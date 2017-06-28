@@ -1,42 +1,31 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <title>登録完了画面</title>
-  <link rel="stylesheet" type="text/css" href="/cheshirecat/css/style.css">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-</head>
-<body>
+<?php
 
-  <!-- ヘッダ -->
-  <div class="header">
-    <div class="header_system_name">
-      顧客管理システム
-    </div>
+  session_start();
 
-    <div class="header_menu">
-      <table class="header_menu">
-        <tr>
-          <td class="header_menu">
-            <a href="../index.html">
-              <p class="header_menu_column">顧客情報登録</p>
-            </a>
-          </td>
-          <td class="header_menu">
-            <a href="../searchInput.html">
-              <p class="header_menu_column">顧客情報検索</p>
-            </a>
-          </td>
-          <td class="header_menu">
-            <a href="mailSend.php">
-              <p class="header_menu_column">メール送信</p>
-            </a>
-          </td>
-        </tr>
-      </table>
-    </div>
+  if(!isset($_SESSION["username"])) {
+    header("Location: ../index.php");
+    exit;
+  }
+?>
+
+<?php include('../header.html'); ?>
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <a class="navbar-brand text-muted">顧客管理システム</a>
+    <ul class="nav navbar-nav navbar-right" id="nav">
+      <li class="active"><a href="../registInput.php">顧客情報登録</a></li>
+      <li><a href="../searchInput.php">顧客情報検索</a></li>
+      <li><a href="mailSend.php">メール送信</a></li>
+      <li><a href="userRegist.php">ユーザ登録</a></li>
+    </ul>
   </div>
-  <!-- ヘッダ -->
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-5"><h2>顧客情報登録</h2></div>
+  </div>
 
 <?php
 
@@ -65,14 +54,19 @@ if ($stmt = $mysqli->prepare($sql)) {
 
   /* プリペアドステートメント実行 */
   if ($stmt->execute()) {
-    print("<p>顧客情報登録完了</p>");
+    print('<div class="row">');
+      print('<div class="col-xs-5"><p>顧客情報登録完了</p></div>');
+    print('</div>');
   } else {
-    print("<p>顧客情報登録失敗</p>");
+    print('<div class="row">');
+      print('<div class="col-xs-5"><p>顧客情報登録失敗</p></div>');
+    print('</div>');
   }
 
 }
 
 ?>
 
-</body>
-</html>
+</div>
+
+<?php include('../footer.html'); ?>

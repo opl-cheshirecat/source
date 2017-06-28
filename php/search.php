@@ -1,45 +1,31 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <title>顧客情報検索画面</title>
-  <link rel="stylesheet" type="text/css" href="/cheshirecat/css/style.css">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-</head>
-<body>
+<?php
 
-  <!-- ヘッダ -->
-  <div class="header">
-    <div class="header_system_name">
-      顧客管理システム
-    </div>
+  session_start();
 
-    <div class="header_menu">
-      <table class="header_menu">
-        <tr>
-          <td class="header_menu">
-            <a href="../index.html">
-              <p class="header_menu_column">顧客情報登録</p>
-            </a>
-          </td>
-          <td class="header_menu">
-            <a href="../searchInput.html">
-              <p class="header_menu_column">顧客情報検索</p>
-            </a>
-          </td>
-          <td class="header_menu">
-            <a href="mailSend.php">
-              <p class="header_menu_column">メール送信</p>
-            </a>
-          </td>
-        </tr>
-      </table>
-    </div>
+  if(!isset($_SESSION["username"])) {
+    header("Location: ../index.php");
+    exit;
+  }
+?>
+
+<?php include('../header.html'); ?>
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <a class="navbar-brand text-muted">顧客管理システム</a>
+    <ul class="nav navbar-nav navbar-right" id="nav">
+      <li><a href="../registInput.php">顧客情報登録</a></li>
+      <li class="active"><a href="../searchInput.php">顧客情報検索</a></li>
+      <li><a href="mailSend.php">メール送信</a></li>
+      <li><a href="userRegist.php">ユーザ登録</a></li>
+    </ul>
   </div>
-  <!-- ヘッダ -->
-  <!-- 検索結果表示部 -->
-  <div class="main_flame">
-  <h2 class="main_flame_title">顧客情報検索結果</h2>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-5"><h2>顧客情報検索</h2></div>
+  </div>
 
 <?php
 
@@ -111,10 +97,15 @@ try {
 
         // 結果を出力
         if ($cnt == 0) {
-          print('該当するデータがありません。<br>');
+          print('<div class="row">');
+          print('<div class="col-xs-offset-1 col-xs-5">');
+          print('該当するデータがありません。');
+          print('</div>');
+          print('</div>');
         } else {
-          print('<table border="1" cellspacing="0">');
-          print('<tr class="search_result_header">');
+          print('<div class="table-responsive">');
+          print('<table class="table table-hover">');
+          print('<tr>');
           print('<th>企業名</th>');
           print('<th>最終アポ日</th>');
           print('<th>担当者名</th>');
@@ -135,6 +126,7 @@ try {
             print('</tr>');
           }
           print('</table>');
+          print('</div>');
         }
         // 結果セットを開放
         $result->free();
@@ -148,10 +140,7 @@ try {
   exit('顧客情報検索失敗。'.$e->getMessage());
 }
 
- ?>
-
+?>
 </div>
-  <!-- 検索結果表示部 -->
 
-</body>
-</html>
+<?php include('../footer.html'); ?>

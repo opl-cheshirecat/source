@@ -1,41 +1,32 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <link rel="stylesheet" type="text/css" href="/cheshirecat/css/style.css">
-</head>
-<body>
-  <!-- ヘッダ -->
-  <div class="header">
-    <div class="header_system_name">
-      顧客管理システム
-    </div>
+<?php
 
-    <div class="header_menu">
-      <table class="header_menu">
-        <tr>
-          <td class="header_menu">
-            <a href="../index.html">
-              <p class="header_menu_column">顧客情報登録</p>
-            </a>
-          </td>
-          <td class="header_menu">
-            <a href="../searchInput.html">
-              <p class="header_menu_column">顧客情報検索</p>
-            </a>
-          </td>
-          <td class="header_menu">
-            <a href="mailSend.php">
-              <p class="header_menu_column">メール送信</p>
-            </a>
-          </td>
-        </tr>
-      </table>
-    </div>
+  session_start();
+
+  if(!isset($_SESSION["username"])) {
+    header("Location: ../index.php");
+    exit;
+  }
+?>
+
+<?php include('../header.html'); ?>
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <a class="navbar-brand text-muted">顧客管理システム</a>
+    <ul class="nav navbar-nav navbar-right" id="nav">
+      <li><a href="../registInput.php">顧客情報登録</a></li>
+      <li><a href="../searchInput.php">顧客情報検索</a></li>
+      <li class="active"><a href="mailSend.php">メール送信</a></li>
+      <li><a href="userRegist.php">ユーザ登録</a></li>
+    </ul>
   </div>
-  <!-- ヘッダ -->
-  <div class="main_flame">
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-5"><h2>メール送信</h2></div>
+  </div>
+
   <?php
     mb_language("Japanese");
     mb_internal_encoding("UTF-8");
@@ -132,7 +123,7 @@
 
     /* 送信アドレス分ループ */
     $errFlg = "0";
-    foreach ($mailTerget as $targetAddress) {
+    foreach ((array)$mailTerget as $targetAddress) {
 
       /* メール送信 */
       if (!mb_send_mail($targetAddress, $mailSubject, $message, $additional_headers)) {
@@ -144,12 +135,22 @@
     mb_send_mail("sales@oplan.co.jp", $mailSubject, $message, $additional_headers);
 
     if ($errFlg == "0") {
-      print("<p>メール送信完了</p>");
+      print('<div class="row">');
+      print('<p>' . $mailTerget . '</p>');
+      print('<p>' . $mailSource . '</p>');
+      print('<p>' . $mailSubject . '</p>');
+      print('<p>' . $mailText . '</p>');
+      print('</div>');
+      print('<div class="row">');
+        print('<div class="col-xs-5"><p>メール送信完了</p></div>');
+      print('</div>');
     } else {
-      print("<p>メール送信失敗</p>");
+      print('<div class="row">');
+        print('<div class="col-xs-5"><p>メール送信失敗</p></div>');
+      print('</div>');
     }
   ?>
 
 </div>
-</body>
-</html>
+
+<?php include('../footer.html'); ?>
