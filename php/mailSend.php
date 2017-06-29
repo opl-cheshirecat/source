@@ -27,8 +27,8 @@
     <div class="col-xs-5"><h2>メール送信</h2></div>
   </div>
 
-  <form action="mail.php" enctype="multipart/form-data" method="post">
-    <div class="row">
+  <div class="row">
+    <form action="mail.php" enctype="multipart/form-data" method="post">
       <div class="col-xs-6">
         <div class="form-group">
           <label>送信元アドレス</label>
@@ -117,8 +117,8 @@
             ?>
           </table>
         </div>
-      </div>
     </form>
+  </div>
 </div>
 
 <script type="text/javascript">

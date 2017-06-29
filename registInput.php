@@ -27,14 +27,14 @@
     <div class="col-xs-5"><h2>顧客情報登録</h2></div>
   </div>
 
-  <form action="php/regist.php" method="post">
+  <form action="php/regist.php" method="post" name="crientForm" data-toggle="validator">
     <div class="form-group">
       <label>企業名</label>
-      <input type="text" name="companyName" class="form-control">
+      <input type="text" name="companyName" class="form-control" required>
     </div>
     <div class="form-group">
       <label>最終アポ日(yyyy/mm/dd)</label>
-      <input type="text" name="lastApDate" class="form-control">
+      <input type="text" id="lastApDate" name="lastApDate" class="form-control" style="ime-mode: disabled;" pattern="^(20[1-9][0-9])/(0[1-9]|1[0-2])/(0[1-9]|[12][0-9]|3[01])$">
     </div>
     <div class="form-group">
       <label>担当者名</label>
@@ -46,19 +46,19 @@
     </div>
     <div class="form-group">
       <label>担当者電話番号</label>
-      <input type="text" name="contactTel" class="form-control">
+      <input type="text" id="contactTel" name="contactTel" class="form-control" style="ime-mode: disabled;" pattern="(^0[1-9]{1}-[0-9]{4}-[0-9]{4}$)|(^0[1-9]{2}-[0-9]{3,4}-[0-9]{4}$)|(^0[1-9]{3}-[0-9]{2}-[0-9]{4}$)">
     </div>
     <div class="form-group">
       <label>担当者メールアドレス</label>
-      <input type="text" name="contactMail" class="form-control">
+      <input type="text" id="contactMail" name="contactMail" class="form-control" style="ime-mode: disabled;" pattern="^[a-zA-Z0-9_.+-]+[@][a-zA-Z0-9.-]+$">
     </div>
     <div class="form-group">
       <label>メール送信用メールアドレス</label>
-      <input type="text" name="sendMail" class="form-control">
+      <input type="text" id="sendMail" name="sendMail" class="form-control" style="ime-mode: disabled;" pattern="^[a-zA-Z0-9_.+-]+[@][a-zA-Z0-9.-]+$">
     </div>
     <div class="form-group">
       <label>ホームページ</label>
-      <input type="text" name="webPage" class="form-control">
+      <input type="text" id="webPage" name="webPage" class="form-control" style="ime-mode: disabled;" pattern="^(https?)(:\/\/[-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#]+)$">
     </div>
     <div class="form-group">
       <label>案件情報</label>
