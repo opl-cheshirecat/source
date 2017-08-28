@@ -65,9 +65,14 @@
         <button type="submit">送信</button>
       </div>
       <div class="col-xs-6">
+      
+        <input type="checkbox" name="rankA" id="rankA">A
+        <input type="checkbox" name="rankB" id="rankB">B
+        <input type="checkbox" name="rankC" id="rankC">C
+       
         <table class="table table-hover">
           <tr>
-            <th><input type="checkbox" name="mailTerget_all" id="mailTerget_all" /></th>
+            <th></th>
             <th>企業名</th>
             <th>担当者名</th>
             <th>送信用メールアドレス</th>
@@ -78,7 +83,7 @@
             require "dbConnector.php";
             $mysqli = dbConnect();
             $mysqli->set_charset("utf8");
-            $sql = 'SELECT CompanyName, ContactName, SendMail FROM crient ORDER BY CrientId';
+            $sql = 'SELECT CompanyName, CompanyRank, ContactName, SendMail FROM crient ORDER BY CrientId';
 
             /* プリペアドステートメント */
             if ($stmt = $mysqli->prepare($sql)) {
@@ -93,7 +98,7 @@
                   while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
                     print('<tr>');
                     print('<td>');
-                    print('<input type="checkbox" name="mailTerget[]" value="' . $row['SendMail'] . '" class="check" />');
+                    print('<input type="checkbox" name="mailTerget[]" id="' . $row['CompanyRank'] . '" value="' . $row['SendMail'] . '" class="check" />');
                     print('</td>');
                     print('<td>');
                     print($row['CompanyName']);
@@ -122,19 +127,31 @@
 </div>
 
 <script type="text/javascript">
-  $(function() {
-    $('#mailTerget_all').on('click', function() {
-      $('.check').prop('checked', this.checked);
-    });
 
-    $('.check').on('click', function() {
-      if ($('#targets :checked').length == $('#targets :input').length){
-        $('#mailTerget_all').prop('checked', 'checked');
-      }else{
-        $('#mailTerget_all').prop('checked', false);
-      }
-    });
+  $('#rankA').click(function() {
+    if ($('#rankA').prop('checked')) {
+      $('input[id="A"]').prop('checked', true);
+    } else {
+      $('input[id="A"]').prop('checked', false);
+    }
   });
+
+  $('#rankB').click(function() {
+    if ($('#rankB').prop('checked')) {
+      $('input[id="B"]').prop('checked', true);
+    } else {
+      $('input[id="B"]').prop('checked', false);
+    }
+  });
+
+  $('#rankC').click(function() {
+    if ($('#rankC').prop('checked')) {
+      $('input[id="C"]').prop('checked', true);
+    } else {
+      $('input[id="C"]').prop('checked', false);
+    }
+  });
+
 </script>
 
 <?php include('../footer.html'); ?>

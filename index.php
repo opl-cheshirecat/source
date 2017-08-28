@@ -73,7 +73,7 @@ if(isset($_SESSION["username"])) {
           <label>ユーザ名</label>
         </div>
         <div class="col-xs-4">
-          <input type="text" name="username" class="form-control">
+          <input type="text" name="username" class="form-control" required>
         </div>
       </div>
     </div>
@@ -83,7 +83,7 @@ if(isset($_SESSION["username"])) {
           <label>パスワード</label>
         </div>
         <div class="col-xs-4">
-          <input type="password" name="password" class="form-control">
+          <input type="password" name="password" class="form-control" required>
         </div>
       </div>
     </div>

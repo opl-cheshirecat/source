@@ -132,7 +132,7 @@
       }
     }
 
-    mb_send_mail("sales@oplan.co.jp", $mailSubject, $message, $additional_headers);
+    mb_send_mail("h.yoshida@oplan.co.jp", $mailSubject, $message, $additional_headers);
 
     if ($errFlg == "0") {
       print('<div class="row">');

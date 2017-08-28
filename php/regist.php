@@ -31,7 +31,7 @@
 
 /* 入力値取得 */
 $companyName = $_REQUEST['companyName'];
-$lastApDate = $_REQUEST['lastApDate'];
+$companyRank = $_REQUEST['companyRank'];
 $contactName = $_REQUEST['contactName'];
 $contactCharacter = $_REQUEST['contactCharacter'];
 $contactTel = $_REQUEST['contactTel'];
@@ -45,12 +45,12 @@ require "dbConnector.php";
 $mysqli = dbConnect();
 $mysqli->set_charset("utf8");
 /* SQL */
-$sql = 'INSERT INTO crient ( CompanyName, LastApDate, ContactName, ContactCharacter, ContactTel, ContactMail, SendMail, WebPage, CaseInfo) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+$sql = 'INSERT INTO crient ( CompanyName, ContactName, ContactCharacter, ContactTel, ContactMail, SendMail, WebPage, CaseInfo, CompanyRank) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?)';
 
 /* プリペアドステートメント */
 if ($stmt = $mysqli->prepare($sql)) {
   /* 変数のバインド */
-  $stmt->bind_param('sssssssss', $companyName, $lastApDate, $contactName, $contactCharacter, $contactTel, $contactMail, $sendMail, $webPage, $caseInfo);
+  $stmt->bind_param('sssssssss', $companyName, $contactName, $contactCharacter, $contactTel, $contactMail, $sendMail, $webPage, $caseInfo, $companyRank);
 
   /* プリペアドステートメント実行 */
   if ($stmt->execute()) {
@@ -59,6 +59,7 @@ if ($stmt = $mysqli->prepare($sql)) {
     print('</div>');
   } else {
     print('<div class="row">');
+      print('<p>' . $stmt->error . '</p>');
       print('<div class="col-xs-5"><p>顧客情報登録失敗</p></div>');
     print('</div>');
   }

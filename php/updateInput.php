@@ -62,8 +62,12 @@
           print('<input type="text" name="companyName" value="' . $row['CompanyName'] . '" class="form-control">');
         print('</div>');
         print('<div class="form-group">');
-          print('<label>最終アポ日</label>');
-          print('<input type="text" name="lastApDate" value="' . $row['LastApDate'] . '" class="form-control">');
+          print('<label>企業ランク</label>');
+          print('<select name="companyRank" id="companyRank" value="' . $row['CompanyRank'] . '" class="form-control">');
+            print('<option value="A">A</option>');
+            print('<option value="B">B</option>');
+            print('<option value="C">C</option>');
+          print('</select>');
         print('</div>');
         print('<div class="form-group">');
           print('<label>担当者名</label>');

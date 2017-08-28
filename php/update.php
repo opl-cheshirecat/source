@@ -32,7 +32,7 @@
     /* 入力値取得 */
     $crientId = $_REQUEST['crientId'];
     $companyName = $_REQUEST['companyName'];
-    $lastApDate = $_REQUEST['lastApDate'];
+    $companyRank = $_REQUEST['companyRank'];
     $contactName = $_REQUEST['contactName'];
     $contactCharacter = $_REQUEST['contactCharacter'];
     $contactTel = $_REQUEST['contactTel'];
@@ -46,12 +46,12 @@
     $mysqli = dbConnect();
     $mysqli->set_charset("utf8");
     /* SQL */
-    $sql = 'UPDATE crient SET CompanyName = ?, LastApDate = ?, ContactName = ?, ContactCharacter = ?, ContactTel = ?, ContactMail = ?, SendMail = ?, WebPage = ?, CaseInfo = ? WHERE CrientId = ?';
+    $sql = 'UPDATE crient SET CompanyName = ?, companyRank = ?, ContactName = ?, ContactCharacter = ?, ContactTel = ?, ContactMail = ?, SendMail = ?, WebPage = ?, CaseInfo = ? WHERE CrientId = ?';
 
     /* プリペアドステートメント */
     if ($stmt = $mysqli->prepare($sql)) {
       /* 変数のバインド */
-      $stmt->bind_param('sssssssssi', $companyName, $lastApDate, $contactName, $contactCharacter, $contactTel, $contactMail, $sendMail, $webPage, $caseInfo, $crientId);
+      $stmt->bind_param('sssssssssi', $companyName, $companyRank, $contactName, $contactCharacter, $contactTel, $contactMail, $sendMail, $webPage, $caseInfo, $crientId);
 
       /* プリペアドステートメント実行 */
       if ($stmt->execute()) {
@@ -65,7 +65,7 @@
           print('</tr>');
           print('<tr>');
             print('<td>最終アポ日</td>');
-            print('<td>' . $lastApDate . '</td>');
+            print('<td>' . $companyRank . '</td>');
           print('</tr>');
           print('<tr>');
             print('<td>担当者名</td>');

@@ -33,8 +33,13 @@
       <input type="text" name="companyName" class="form-control">
     </div>
     <div class="form-group">
-      <label>最終アポ日(yyyy/mm/dd)</label>
-      <input type="text" name="lastApDate" class="form-control">
+      <label>企業ランク</label>
+      <select name="companyRank" id="companyRank" class="form-control">
+        <option value="">指定なし</option>
+        <option value="A">A</option>
+        <option value="B">B</option>
+        <option value="C">C</option>
+      </select>
     </div>
     <div class="form-group">
       <label>担当者名</label>

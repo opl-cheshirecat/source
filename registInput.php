@@ -33,8 +33,12 @@
       <input type="text" name="companyName" class="form-control" required>
     </div>
     <div class="form-group">
-      <label>最終アポ日(yyyy/mm/dd)</label>
-      <input type="text" id="lastApDate" name="lastApDate" class="form-control" style="ime-mode: disabled;" pattern="^(20[1-9][0-9])/(0[1-9]|1[0-2])/(0[1-9]|[12][0-9]|3[01])$">
+      <label>企業ランク</label>
+      <select name="companyRank" id="companyRank" class="form-control" required>
+        <option value="A">A</option>
+        <option value="B">B</option>
+        <option value="C">C</option>
+      </select>
     </div>
     <div class="form-group">
       <label>担当者名</label>
@@ -50,11 +54,11 @@
     </div>
     <div class="form-group">
       <label>担当者メールアドレス</label>
-      <input type="text" id="contactMail" name="contactMail" class="form-control" style="ime-mode: disabled;" pattern="^[a-zA-Z0-9_.+-]+[@][a-zA-Z0-9.-]+$">
+      <input type="email" id="contactMail" name="contactMail" class="form-control" style="ime-mode: disabled;">
     </div>
     <div class="form-group">
       <label>メール送信用メールアドレス</label>
-      <input type="text" id="sendMail" name="sendMail" class="form-control" style="ime-mode: disabled;" pattern="^[a-zA-Z0-9_.+-]+[@][a-zA-Z0-9.-]+$">
+      <input type="email" id="sendMail" name="sendMail" class="form-control" style="ime-mode: disabled;">
     </div>
     <div class="form-group">
       <label>ホームページ</label>

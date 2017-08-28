@@ -1,15 +1,6 @@
+
+
 function inputCheck() {
-
-  // 最終アポ日
-  if (crientForm.lastApDate.value != "") {
-    if (!crientForm.lastApDate.value.match(/^(20[1-9][0-9])/(0[1-9]|1[0-2])/(0[1-9]|[12][0-9]|3[01])$/)) {
-      crientForm.lastApDate.title = "yyyy/mm/ddで入力してください";
-      return false;
-    } else {
-      crientForm.lastApDate.title = "";
-    }
-  }
-
   // 担当者電話番号
   if (crientForm.contactTel.value != "") {
     if (!crientForm.contactTel.value.match(/^0[1-9]{1}-[0-9]{4}-[0-9]{4}$)|(^0[1-9]{2}-[0-9]{3,4}-[0-9]{4}$)|(^0[1-9]{3}-[0-9]{2}-[0-9]{4}$)/) {

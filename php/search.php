@@ -31,7 +31,7 @@
 
 /* 検索値取得 */
 $companyName = trim($_REQUEST['companyName']);
-$lastApDate = trim($_REQUEST['lastApDate']);
+$companyRank = trim($_REQUEST['companyRank']);
 $contactName = trim($_REQUEST['contactName']);
 $caseInfo = trim($_REQUEST['caseInfo']);
 
@@ -47,10 +47,10 @@ if (!empty($companyName)) {
   $sqlParams[] = '%' . $companyName . '%';
 }
 // 最終あぽ日
-if (!empty($lastApDate)) {
-  $sqlWhere[] = "LastApDate LIKE ?";
+if (!empty($companyRank)) {
+  $sqlWhere[] = "CompanyRank LIKE ?";
   $sqlParams[0] .= "s";
-  $sqlParams[] = '%' . $lastApDate . '%';
+  $sqlParams[] = '%' . $companyRank . '%';
 }
 // 担当者名
 if (!empty($contactName)) {
@@ -107,7 +107,7 @@ try {
           print('<table class="table table-hover">');
           print('<tr>');
           print('<th>企業名</th>');
-          print('<th>最終アポ日</th>');
+          print('<th>企業ランク</th>');
           print('<th>担当者名</th>');
           print('<th>担当者電話番号</th>');
           print('<th>担当者メールアドレス</th>');
@@ -117,7 +117,7 @@ try {
           while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
             print('<tr>');
             print('<td>' . $row['CompanyName'] . '</td>');
-            print('<td>' . $row['LastApDate'] . '</td>');
+            print('<td>' . $row['CompanyRank'] . '</td>');
             print('<td>' . $row['ContactName'] . '</td>');
             print('<td>' . $row['ContactTel'] .'</td>');
             print('<td>' . $row['ContactMail'] . '</td>');
